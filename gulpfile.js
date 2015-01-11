@@ -1,29 +1,18 @@
 'use strict';
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var sourcemaps = require('gulp-sourcemaps');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var watchify = require('watchify');
-var browserify = require('browserify');
-var uglify = require('gulp-uglify');
+/*
+  gulpfile.js
+  ===========
+  Rather than manage one giant configuration file responsible
+  for creating multiple tasks, each task has been broken out into
+  its own file in gulp/tasks. Any files in that directory get
+  automatically required below.
 
-var bundler = watchify(browserify('./src/index.js', watchify.args));
-// add any other browserify options or transforms here
-bundler.transform('brfs');
+  To add a new task, simply add a new task file that directory.
+  gulp/tasks/default.js specifies the default set of tasks to run
+  when you run `gulp`.
+*/
 
-gulp.task('js', bundle); // so you can run `gulp js` to build the file
-bundler.on('update', bundle); // on any dep update, runs the bundler
+var requireDir = require('require-dir');
 
-function bundle() {
-  return bundler.bundle()
-    // log errors if they happen
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
-    .pipe(source('bundle.js'))
-    // optional, remove if you dont want sourcemaps
-      .pipe(buffer())
-      .pipe(sourcemaps.init({loadMaps: true})) // loads map from browserify file
-      .pipe(sourcemaps.write('./')) // writes .map file
-    //
-    .pipe(gulp.dest('./dist'));
-}
+// Require all tasks in gulp/tasks, including subfolders
+requireDir('./gulp/tasks', { recurse: true });
