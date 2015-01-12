@@ -36,8 +36,7 @@
     "bootstrap": {
       "exports": "bootstrap",
       "depends": [
-        "jquery:jQuery",
-        "jquery:$"
+        "jquery:jQuery"
       ]
     }
   },

@@ -17,12 +17,12 @@ module.exports = {
   },
   sass: {
     src: src + '/css/*.{sass,scss}',
-    dest: dest + '/css/',
+    dest: dest,
     settings: {
-      // Required if you want to use SASS syntax
-      // See https://github.com/dlmanning/gulp-sass/issues/81
-      sourceComments: 'map',
-      imagePath: src + '/img' // Used by the image-url helper
+      sourcemap: true
+    },
+    sourcemap: {
+      loadMaps: true
     }
   },
   copy: {
@@ -34,7 +34,10 @@ module.exports = {
   },
   images: {
     src: src + '/img/**/*',
-    dest: dest + '/img'
+    dest: dest + '/img',
+    opt: {
+      optimizationLevel: 4
+    }
   },
   markup: {
     src: src + '/**.*.html',
@@ -68,8 +71,8 @@ module.exports = {
     ]
   },
   production: {
-    cssSrc: dest + '/css/*.css',
-    jsSrc: dest + '/js/*.js',
+    cssSrc: dest + '/*.css',
+    jsSrc: dest + '/*.js',
     dest: dest,
     cssOpt: {
       keepSpecialComments: 0
