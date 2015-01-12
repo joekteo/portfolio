@@ -15,8 +15,6 @@
     "url": ""
   },
   "browser": {
-    "underscore": "backbone/node_modules/underscore",
-    "plugin": "./app/javascript/vendor/jquery-plugin.js",
     "bootstrap": "bower_components/bootstrap/dist/js/bootstrap.js"
   },
   "browserify": {
@@ -38,7 +36,8 @@
     "bootstrap": {
       "exports": "bootstrap",
       "depends": [
-        "jquery:jQuery"
+        "jquery:jQuery",
+        "jquery:$"
       ]
     }
   },

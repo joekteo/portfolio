@@ -1,4 +1,4 @@
 'use strict';
 var gulp = require('gulp');
 
-gulp.task('default', ['sass', 'images', 'copy', 'markup', 'watch']);
+gulp.task('default', ['copy', 'images', 'markup', 'sass', 'watch']);

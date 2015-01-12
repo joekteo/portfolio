@@ -10,59 +10,66 @@ module.exports = {
       // Serve up our build folder
       baseDir: dest,
       middleware: [compression()],
-      https: false
+      https: true
       // proxy: 'localhost:3000',  // local node app address
       // port: 4004  // use *different* port than above
     }
   },
   sass: {
-    src: src + '/sass/*.{sass,scss}',
-    dest: dest,
+    src: src + '/css/*.{sass,scss}',
+    dest: dest + '/css/',
     settings: {
       // Required if you want to use SASS syntax
       // See https://github.com/dlmanning/gulp-sass/issues/81
       sourceComments: 'map',
-      imagePath: '/images' // Used by the image-url helper
+      imagePath: src + '/img' // Used by the image-url helper
     }
   },
   copy: {
-    src: src + '/fonts/**',
-    dest: dest + '/fonts'
+    src: src + '/**/*',
+    dest: dest
   },
   gulp: {
     src: gulp + '/**/*'
   },
   images: {
-    src: src + '/images/**',
-    dest: dest + '/images'
+    src: src + '/img/**/*',
+    dest: dest + '/img'
   },
   markup: {
-    src: src + '/htdocs/**',
+    src: src + '/**.*.html',
     dest: dest
   },
   browserify: {
     // A separate bundle will be generated for each
     // bundle config in the list below
-    bundleConfigs: [{
-      entries: src + '/javascript/global.coffee',
-      dest: dest,
-      outputName: 'global.js',
-      // Additional file extentions to make optional
-      extensions: ['.coffee', '.hbs'],
-      // list of modules to make require-able externally
-      require: ['jquery', 'underscore']
-    },
+    bundleConfigs: [
+    // {
+    //   entries: src + '/javascript/global.coffee',
+    //   dest: dest,
+    //   outputName: 'global.js',
+    //   // Additional file extentions to make optional
+    //   extensions: ['.coffee', '.hbs'],
+    //   // list of modules to make require-able externally
+    //   require: ['jquery', 'underscore']
+    // },
+    // {
+    //   entries: src + '/javascript/page.js',
+    //   dest: dest,
+    //   outputName: 'page.js'
+    //   // list of externally available modules to exclude from the bundle
+    //   // external: ['jquery', 'underscore']
+    // },
     {
-      entries: src + '/javascript/page.js',
+      entries: src + '/js/all.js',
       dest: dest,
-      outputName: 'page.js'
-      // list of externally available modules to exclude from the bundle
-      // external: ['jquery', 'underscore']
-    }]
+      outputName: 'bundle.js'
+    }
+    ]
   },
   production: {
-    cssSrc: dest + '/*.css',
-    jsSrc: dest + '/*.js',
+    cssSrc: dest + '/css/*.css',
+    jsSrc: dest + '/js/*.js',
     dest: dest,
     cssOpt: {
       keepSpecialComments: 0
@@ -70,7 +77,7 @@ module.exports = {
   },
   minifyHtml: {
     opts: {spare:true},
-    src: src + '/htdocs/**',
+    src: dest + '/*.html',
     dest: dest
   }
 };
