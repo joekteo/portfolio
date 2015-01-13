@@ -19,14 +19,16 @@ module.exports = {
     src: src + '/css/*.{sass,scss}',
     dest: dest,
     settings: {
-      sourcemap: true
+      sourcemap: true,
+      sourceComments: 'map',
+      imagePath: '/img' // Used by the image-url helper
     },
     sourcemap: {
       loadMaps: true
     }
   },
   copy: {
-    src: src + '/**/*',
+    src: [src + '/**/*', '!' + src + '/{img,img/**/*}'],
     dest: dest
   },
   gulp: {
@@ -34,10 +36,7 @@ module.exports = {
   },
   images: {
     src: src + '/img/**/*',
-    dest: dest + '/img',
-    opt: {
-      optimizationLevel: 4
-    }
+    dest: dest + '/img/'
   },
   markup: {
     src: src + '/**.*.html',

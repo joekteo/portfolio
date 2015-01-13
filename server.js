@@ -6,14 +6,13 @@ var port        = process.env.PORT || 3000;
 var path        = __dirname + '/build/';
 var bodyparser  = require('body-parser');
 var compression = require('compression');
+var oneDay = 86400000;
 // var mongoose    = require('mongoose');
 // var uriUtil     = require('mongodb-uri');
 // var options     = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
 //                 replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } } };
 // var mongodbUri  = process.env.MONGOLAB_URI;
 // var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-var oneDay = 86400000;
-
 // mongoose.connect(process.env.MONGO_URL || mongooseUri || 'mongodb://localhost/faith_development', options);
 
 var api = express.Router();

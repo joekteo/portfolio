@@ -9,7 +9,7 @@
     "bower": "bower install",
     "build": "gulp",
     "start": "node server.js"
-    },
+  },
   "repository": {
     "type": "git",
     "url": ""
@@ -67,6 +67,7 @@
     "reactify": "^0.17.1",
     "require-dir": "^0.1.0",
     "vinyl-source-stream": "~0.1.1",
+    "imagemin-pngquant": "^4.0.0",
     "watchify": "^2.2.1"
   },
   "dependencies": {
