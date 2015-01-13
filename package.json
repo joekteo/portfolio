@@ -17,6 +17,14 @@
   "browser": {
     "bootstrap": "bower_components/bootstrap/dist/js/bootstrap.js"
   },
+  "browserify-shim": {
+    "bootstrap": {
+      "exports": "bootstrap",
+      "depends": [
+        "jquery:jQuery"
+      ]
+    }
+  },
   "browserify": {
     "transform": [
       "browserify-shim",
@@ -25,20 +33,6 @@
       "debowerify",
       "reactify"
     ]
-  },
-  "browserify-shim": {
-    "plugin": {
-      "exports": "plugin",
-      "depends": [
-        "jquery:$"
-      ]
-    },
-    "bootstrap": {
-      "exports": "bootstrap",
-      "depends": [
-        "jquery:jQuery"
-      ]
-    }
   },
   "devDependencies": {
     "browser-sync": "~1.3.6",
