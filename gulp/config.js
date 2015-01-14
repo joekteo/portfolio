@@ -9,8 +9,7 @@ module.exports = {
     server: {
       // Serve up our build folder
       baseDir: dest,
-      middleware: [compression()],
-      https: true
+      middleware: [compression()]
       // proxy: 'localhost:3000',  // local node app address
       // port: 4004  // use *different* port than above
     }
@@ -28,7 +27,7 @@ module.exports = {
     }
   },
   copy: {
-    src: [src + '/**/*', '!' + src + '/{img,img/**/*}'],
+    src: [src + '/**/*', '!' + src + '/{img,img/**/*}'], // '!' must be a string
     dest: dest
   },
   gulp: {
@@ -39,7 +38,7 @@ module.exports = {
     dest: dest + '/img/'
   },
   markup: {
-    src: src + '/**.*.html',
+    src: src + '/**/*.html',
     dest: dest
   },
   browserify: {
